@@ -1,0 +1,40 @@
+﻿<extra:OverlayWindow x:Class="RealEstate.Overlays.Admin.AddAdminOverlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:extra="http://schemas.extra.com/ui"
+        x:Name="RE_AddAdminOverlay"
+        Title="Add an Admin" Height="300" Width="300" TitleBarVisibility="Visible" Closed="RE_AddAdminOverlay_Closed">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Username : " />
+            <TextBox x:Name="TB_Username" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="216" />
+
+            <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Password : " />
+            <PasswordBox x:Name="PB_Password" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="216" />
+
+            <TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Confirm Password : " />
+            <PasswordBox x:Name="PB_ConfirmPassword" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="216" />
+            
+            <Button x:Name="BT_AddAdmin" Content="Add Admin" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Click="BT_AddAdmin_Click" />
+
+
+        </Grid>
+    </Grid>
+</extra:OverlayWindow>

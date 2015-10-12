@@ -1,0 +1,59 @@
+﻿<extra:Window x:Class="RealEstate.Windows.AgentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:metro="http://schemas.codeplex.com/elysium"        
+        xmlns:params="http://schemas.codeplex.com/elysium/params"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"              
+        xmlns:extra="http://schemas.extra.com/ui"
+        xmlns:AgentViews="clr-namespace:RealEstate.Views.AgentViews"
+        Style="{StaticResource AccentTitleBarWindowStyle}"
+        Icon="../Images/icon.ico"   
+        x:Name="RE_AgentWindow"
+        Closing="RE_AgentWindow_Closing"
+        Title="Agent : " Height="600" Width="800" WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <AgentViews:AddPropertyView Visibility="Hidden" x:Name="AV_AddProperty" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        
+        <AgentViews:ManageClientsView Visibility="Hidden" x:Name="AV_MangeClients" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        
+        <Button x:Name="BT_AddProperty" Grid.Column="0" Grid.Row="0" Margin="5,5,5,5" Click="BT_AddProperty_Click">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <extra:Icon Style="{StaticResource HousesIconStyle}" Size="VeryLarge" />
+                <TextBlock Text="Add Property" FontSize="30"  />
+            </StackPanel>
+        </Button>
+        
+        <Button x:Name="BT_ManageCustomers" Grid.Column="1" Grid.Row="0" Margin="5,5,5,5" Click="BT_ManageCustomers_Click">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <extra:Icon Style="{StaticResource UsernewIconStyle}" Size="VeryLarge" />
+                <TextBlock Text="Manage Customers" FontSize="30" />
+             </StackPanel>
+        </Button>
+        
+        <Button x:Name="BT_PriceEstimator" Grid.Column="0" Grid.Row="1" Margin="5,0,5,10">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <extra:Icon Style="{StaticResource SouthAfricanRandIconStyle}" Size="VeryLarge" />
+                <TextBlock Text="Price Estimator" FontSize="30" />
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="BT_Manage" Grid.Column="1" Grid.Row="1" Margin="5,5,5,5">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <extra:Icon Style="{StaticResource Tools1IconStyle}" Size="VeryLarge" />
+                <TextBlock Text="Manage" FontSize="30" />
+            </StackPanel>
+        </Button>
+
+
+    </Grid>
+</extra:Window>

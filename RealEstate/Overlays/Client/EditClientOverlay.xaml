@@ -1,0 +1,59 @@
+﻿<extra:OverlayWindow  x:Class="RealEstate.Overlays.Client.EditClientOverlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:extra="http://schemas.extra.com/ui"
+        x:Name="RE_EditClient"
+        Closed="RE_EditClient_Closed"
+        Title="EditCityOverlay" Height="300" Width="300" TitleBarVisibility="Visible">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <CheckBox x:Name="CB_ChangeName" Content="Change Client Name " Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="CB_ChangeName_Checked" Width="216"/>
+            <TextBlock x:Name="TBL_NewName" Text="New client name : " Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden"/>
+            <TextBox x:Name="TB_NewName" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Hidden" Width="150" />
+
+            <CheckBox x:Name="CB_ChangeSurname" Content="Change Client Surname" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="CB_ChangeSurname_Checked" Width="216"/>
+            <TextBlock x:Name="TBL_NewSurname" Text="New client surname : " Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden"/>
+            <TextBox x:Name="TB_NewSurname" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Hidden" Width="150" />
+
+            <CheckBox x:Name="CB_ChangePhone" Content="Change Client Phone Number" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="CB_ChangePhone_Checked" Width="216"/>
+            <TextBlock x:Name="TBL_NewPhone" Text="New client phone number : " Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden"/>
+            <TextBox x:Name="TB_NewPhone" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Hidden" Width="150" />
+
+            <CheckBox x:Name="CB_ChangeEmail" Content="Change Client Email" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="CB_ChangeEmail_Checked" Width="216"/>
+            <TextBlock x:Name="TBL_NewEmail" Text="New client email : " Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden"/>
+            <TextBox x:Name="TB_NewEmail" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Hidden" Width="150" />
+
+            <CheckBox x:Name="CB_ChangePassword" Content="Change Client Password" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="CB_ChangePassword_Checked" Width="216"/>
+            <TextBlock x:Name="TBL_NewPassword" Text="New client password : " Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden"/>
+            <PasswordBox x:Name="PB_NewPassword" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Hidden" Width="150" />
+
+            <TextBlock x:Name="TBL_ConfirmPassword" Text="Confirm new password : " Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden"/>
+            <PasswordBox x:Name="PB_ConfirmPassword" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Hidden" Width="150" />
+
+            <Button x:Name="BT_SaveAndClose" Content="Edit and Close" Grid.Column="0" Grid.Row="6" Click="BT_SaveAndClose_Click" />
+            <Button x:Name="BT_Cancel" Content="Cancel" Grid.Column="1" Grid.Row="6" Margin="10,0,0,0" Click="BT_Cancel_Click" />
+
+        </Grid>
+    </Grid>
+</extra:OverlayWindow>
+

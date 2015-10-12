@@ -1,0 +1,34 @@
+﻿<extra:OverlayWindow x:Class="RealEstate.Overlays.Location.EditProvinceOverlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:extra="http://schemas.extra.com/ui"
+        Closed="OverlayWindow_Closed"                     
+        Title="EditProvinceOverlay" Height="300" Width="300" TitleBarVisibility="Visible">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <TextBlock Text="New Province Name : " Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+            <TextBox x:Name="TB_NewProvinceName" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="120"/>
+            
+            <Button x:Name="BT_Edit" Content="Edit and Close" Grid.Column="0" Grid.Row="1" Click="BT_Edit_Click"/>
+            <Button x:Name="BT_Cancel" Content="Cancel" Grid.Column="1" Grid.Row="1" Margin="10,0,0,0" Click="BT_Cancel_Click"/>
+        </Grid>
+        
+    </Grid>
+</extra:OverlayWindow>
+
+    

@@ -1,0 +1,43 @@
+﻿<extra:Window x:Class="RealEstate.Windows.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:metro="http://schemas.codeplex.com/elysium"        
+        xmlns:params="http://schemas.codeplex.com/elysium/params"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"              
+        xmlns:extra="http://schemas.extra.com/ui"
+        xmlns:AdminViews="clr-namespace:RealEstate.Views.AdminViews"
+        Style="{StaticResource AccentTitleBarWindowStyle}"
+        Icon="../Images/icon.ico"              
+        x:Name="RE_AdminWindow"   
+        Loaded="RE_AdminWindow_Loaded"    
+        Closing="RE_AdminWindow_Closing"
+        Title="Admin : " Height="600" Width="800" WindowState="Maximized">
+    <Grid>
+        <TabControl >
+            <TabItem Header="Users">
+                <TabControl>
+                    <TabItem Header="Admins" >
+                        <AdminViews:AdminView x:Name="TI_AdminView"/>
+                    </TabItem>
+                    <TabItem Header="Agents">
+                        <AdminViews:AgentView x:Name="TI_AgentView" />
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+            <TabItem Header="Locations">
+                <TabControl>
+                    <TabItem Header="Provinces">
+                        <AdminViews:ProvincesView />
+                    </TabItem>
+                    <TabItem Header="Cities">
+                        <AdminViews:CitiesView />
+                    </TabItem>
+                    <TabItem Header="Areas">
+                        <AdminViews:AreaView />
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</extra:Window>

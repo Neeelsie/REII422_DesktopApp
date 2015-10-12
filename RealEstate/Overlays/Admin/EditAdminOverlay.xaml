@@ -1,0 +1,43 @@
+﻿<extra:OverlayWindow x:Class="RealEstate.Overlays.Admin.EditAdminOverlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:extra="http://schemas.extra.com/ui"
+        x:Name="RE_EditAdmin"
+        Title="EditAdminOverlay" Height="300" Width="300" TitleBarVisibility="Visible" Loaded="RE_EditAdmin_Loaded" Closed="RE_EditAdmin_Closed">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <CheckBox x:Name="CB_ChangeUsername" Content="Change Username" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="CB_ChangeUsername_Checked" Width="200"/>
+            <TextBlock x:Name="TBL_Username" Text="Username : " Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden" IsEnabled="False"/>
+            <TextBox x:Name="TB_Username" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="120" Visibility="Hidden" IsEnabled="False" />
+
+            <CheckBox x:Name="CB_ChangePassword" Content="Change Password" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="CB_ChangePassword_Checked" Width="200"/>
+            <TextBlock x:Name="TBL_Password" Text="Password : " Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden" IsEnabled="False" />
+            <PasswordBox x:Name="PB_Password" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Hidden" IsEnabled="False" Width="120" />
+
+            <TextBlock x:Name="TBL_ConfirmPassword" Text="Confirm Password : " Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Visibility="Hidden" IsEnabled="False" />
+            <PasswordBox x:Name="PB_ConfirmPassword" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Visibility="Hidden" IsEnabled="False" Width="120" />
+
+            <Button x:Name="BT_Edit" Content="Edit and Close" Grid.Column="0" Grid.Row="3" Click="BT_Edit_Click" />
+            <Button x:Name="BT_Close" Content="Cancel" Grid.Column="1" Grid.Row="3" Click="BT_Close_Click" Margin="10,0,0,0"/>
+
+        </Grid>
+
+    </Grid>
+</extra:OverlayWindow>

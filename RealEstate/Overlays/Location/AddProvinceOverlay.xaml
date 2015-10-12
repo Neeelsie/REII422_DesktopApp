@@ -1,0 +1,30 @@
+﻿<extra:OverlayWindow  x:Class="RealEstate.Overlays.Location.AddProvinceOverlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:extra="http://schemas.extra.com/ui"
+        Closed="OverlayWindow_Closed"
+        Title="Add a Province" Height="300" Width="300" TitleBarVisibility="Visible">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Province Name : " Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+            <TextBox x:Name="TB_ProvinceName" Width="120" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+            <Button x:Name="BT_AddProvince" Content="Add Province" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Click="BT_AddProvince_Click"/>
+        </Grid>
+    </Grid>
+</extra:OverlayWindow>
