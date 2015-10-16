@@ -18,10 +18,10 @@ namespace RealEstate.Classes
         private string passwordKey = "Password";
         private string dbKey = "DB";
         private string portKey = "Port";
-        private string ftpAddressKey = "FTP";
+        private string ftpWebdirKey = "FTP";
         private string ftpUserKey = "FTPUser";
         private string ftpPasswordKey = "FTPPassword";
-        private string ftpDirectoryKey = "FTPDir";
+        
 
         const string configDir = "RealEstate";
         const string configFile = "config.xml";
@@ -38,7 +38,7 @@ namespace RealEstate.Classes
         public string ConnectionString { get; private set; }
         public bool ConfigLoaded { get; private set; }
 
-        public string FtpAddress { get; private set; }
+        public string FtpWebDirectory { get; private set; }
         public string FtpUser { get; private set; }
         public string FtpPassword { get; private set; }
 
@@ -84,10 +84,9 @@ namespace RealEstate.Classes
             config.Options.AddOptionsRow(crypto.EncryptString(passwordKey), "");
             config.Options.AddOptionsRow(crypto.EncryptString(dbKey), "");
             config.Options.AddOptionsRow(crypto.EncryptString(portKey), "");
-            config.Options.AddOptionsRow(crypto.EncryptString(ftpAddressKey), "");
+            config.Options.AddOptionsRow(crypto.EncryptString(ftpWebdirKey), "");
             config.Options.AddOptionsRow(crypto.EncryptString(ftpUserKey), "");
             config.Options.AddOptionsRow(crypto.EncryptString(ftpPasswordKey), "");
-            config.Options.AddOptionsRow(crypto.EncryptString(ftpDirectoryKey), "");
             WriteConfig();
         }
 
@@ -124,6 +123,15 @@ namespace RealEstate.Classes
                 r = config.Options.Select("Key ='" + crypto.EncryptString(portKey) + "'")[0];
                 ServerPort = crypto.DecryptString(r[1].ToString());
 
+                r = config.Options.Select("Key = '" + crypto.EncryptString(ftpWebdirKey) + "'")[0];
+                FtpWebDirectory = crypto.DecryptString(r[1].ToString());
+
+                r = config.Options.Select("Key = '" + crypto.EncryptString(ftpUserKey) + "'")[0];
+                FtpUser = crypto.DecryptString(r[1].ToString());
+
+                r = config.Options.Select("Key = '" + crypto.EncryptString(ftpPasswordKey) + "'")[0];
+                FtpPassword = crypto.DecryptString(r[1].ToString());
+
                 ConnectionString = "server=" + ServerIP + ";uid=" + ServerUser + ";database=" + ServerDB + ";port=" + ServerPort + ";pwd=" + ServerPassword + ";";
 
                 ConfigLoaded = true;
@@ -149,7 +157,7 @@ namespace RealEstate.Classes
         /// <param name="database">Server database</param>
         /// <param name="portno">Server port number</param>
         /// <returns>Boolean if saved</returns>
-        public bool SaveConfig(string server, string username, string password, string database, string portno)
+        public bool SaveDBConfig(string server, string username, string password, string database, string portno)
         {
             try
             {
@@ -174,6 +182,35 @@ namespace RealEstate.Classes
 
                 r = config.Options.Select("Key = '" + crypto.EncryptString(portKey) + "'")[0];
                 r[1] = crypto.EncryptString(ServerPort);
+
+                WriteConfig();
+                LoadConfig();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool SaveFTPConfig(string webdir, string username, string password)
+        {
+            try
+            {
+                Cryptography crypto = new Cryptography();
+                FtpWebDirectory = webdir;
+                FtpUser = username;
+                FtpPassword = password;
+
+                r = config.Options.Select("Key = '" + crypto.EncryptString(ftpWebdirKey) + "'")[0];
+                r[1] = crypto.EncryptString(webdir);
+
+                r = config.Options.Select("Key = '" + crypto.EncryptString(ftpUserKey) + "'")[0];
+                r[1] = crypto.EncryptString(FtpUser);
+
+                r = config.Options.Select("Key = '" + crypto.EncryptString(ftpPasswordKey) + "'")[0];
+                r[1] = crypto.EncryptString(FtpPassword);
 
                 WriteConfig();
                 LoadConfig();

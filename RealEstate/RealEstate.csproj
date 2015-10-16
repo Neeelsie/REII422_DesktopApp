@@ -113,6 +113,7 @@
     <Compile Include="Classes\Cryptography.cs" />
     <Compile Include="Classes\DatabaseManager.cs" />
     <Compile Include="Classes\FtpManager.cs" />
+    <Compile Include="Classes\FtpState.cs" />
     <Compile Include="Classes\LocationManager.cs" />
     <Compile Include="Classes\Session.cs" />
     <Compile Include="Classes\Validation.cs" />

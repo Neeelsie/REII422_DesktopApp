@@ -215,7 +215,7 @@ namespace RealEstate.Overlays
         private void SaveSettings()
         {
             Classes.ConfigManager configManger = new Classes.ConfigManager();
-            settingsSaved = configManger.SaveConfig(IpAddress(), Username(), Password(), Database(), Port());
+            settingsSaved = configManger.SaveDBConfig(IpAddress(), Username(), Password(), Database(), Port());
         }
         #endregion
 
