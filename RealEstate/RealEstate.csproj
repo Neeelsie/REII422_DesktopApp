@@ -115,6 +115,7 @@
     <Compile Include="Classes\FtpManager.cs" />
     <Compile Include="Classes\LocationManager.cs" />
     <Compile Include="Classes\Session.cs" />
+    <Compile Include="Classes\Validation.cs" />
     <Compile Include="DataSets\Config.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

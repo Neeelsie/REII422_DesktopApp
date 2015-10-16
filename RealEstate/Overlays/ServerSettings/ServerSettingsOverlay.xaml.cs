@@ -65,11 +65,12 @@ namespace RealEstate.Overlays
             bool eHandled = true;
             TextBox temp = (TextBox)sender;
             string temp_text;
+            Classes.Validation validation = new Classes.Validation();
 
-            if (!IsTextNumeric(e.Text))
+            if( validation.IsTextNumeric(e.Text) )
             {
                 temp_text = temp.Text.ToString() + e.Text;
-                eHandled = IsTextInRange(0, 255, temp_text);
+                eHandled = !validation.IsNumberInRange(0, 255, temp_text);
             }
 
             e.Handled = eHandled;
@@ -77,20 +78,8 @@ namespace RealEstate.Overlays
 
         private void PortValidation(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = IsTextNumeric(e.Text);
-        }
-
-        private static bool IsTextNumeric(string text)
-        {
-            System.Text.RegularExpressions.Regex reg = new System.Text.RegularExpressions.Regex("[^0-9]");
-            return reg.IsMatch(text);
-        }
-
-        private static bool IsTextInRange(int min, int max, string text)
-        {
-            int temp_value = int.Parse(text);
-
-            return ((temp_value >= min && temp_value <= max) ? false : true);
+            Classes.Validation validation = new Classes.Validation();
+            e.Handled = !validation.IsTextNumeric(e.Text);
         }
         #endregion
 
