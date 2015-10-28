@@ -42,7 +42,7 @@ namespace RealEstate.Classes
             return dbManager.NonReturnQuery("UPDATE Province SET Province_Name ='" + newProvince + "' WHERE Province_Name = '" + oldProvince +"';");
         }
 
-        private int ProvinceID(string provinceName)
+        public int ProvinceID(string provinceName)
         {
             DatabaseManager dbManager = new DatabaseManager();
 
@@ -95,7 +95,7 @@ namespace RealEstate.Classes
             return dbManager.NonReturnQuery("UPDATE City SET City_Name='" + newCityName + "', City_Province_ID = (SELECT Province_ID FROM Province WHERE Province_Name ='" + newProvince + "') WHERE City_Name ='" + oldCityName + "' AND City_Province_ID = (SELECT Province_ID FROM Province WHERE Province_Name = '" + oldProvince +"');");
         }
 
-        private int CityID(string cityName, int provinceID)
+        public int CityID(string cityName, int provinceID)
         {
             DatabaseManager dbManger = new DatabaseManager();
 
@@ -148,7 +148,48 @@ namespace RealEstate.Classes
 
             return dbManger.NonReturnQuery("UPDATE Area SET Area_Name = '" + newAreaName + "' , Area_City_ID = " + CityID(newCityName, ProvinceID(newProvinceName)) + " WHERE Area_Name = '" + oldAreaName + "' AND Area_City_ID = " + CityID(oldCityName, ProvinceID(oldProvinceName)) + ";");
         }
+        public string AreaFullName(int areaID)
+        {
+            string fullName = "";
+            int cityId = -1;
+            int provinceID = -1;
+            DatabaseManager dbManager = new DatabaseManager();
 
+            var areaName = (dbManager.ReturnQuery("SELECT Area_Name, Area_City_ID FROM Area WHERE Area_ID = " + areaID + ";"));
+            foreach (var i in areaName)
+            {
+                fullName = i[0].ToString();
+                cityId = Convert.ToInt32(i[1]);
+            }
+            var cityName = (dbManager.ReturnQuery("SELECT City_Name, City_Province_ID FROM City WHERE City_ID = " + cityId.ToString() + ";"));
+            foreach (var j in cityName)
+            {
+                fullName = j[0].ToString() + ", " + fullName;
+                provinceID = Convert.ToInt32(j[1]);
+            }
+            var provinceName = (dbManager.ReturnQuery("SELECT Province_Name FROM Province WHERE Province_ID = " + provinceID.ToString() + ";"));
+            foreach (var k in provinceName)
+            {
+                fullName = k[0].ToString() + ", " + fullName;
+            }
+            return fullName;
+        }
+        public int AreaID(int cityID, string areaName)
+        {
+            DatabaseManager dbManger = new DatabaseManager();
+
+            int areaID = -1;
+
+            var restult = dbManger.ReturnQuery("SELECT Area_ID FROM Area WHERE Area_Name = '" + areaName + "' AND Area_City_ID = " + cityID.ToString() + ";");
+
+            foreach (var i in restult)
+            {
+                areaID = int.Parse(i[0]);
+                break;
+            }
+
+            return areaID;
+        }
         #endregion
     }
 }

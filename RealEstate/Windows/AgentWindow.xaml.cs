@@ -19,14 +19,14 @@ namespace RealEstate.Windows
     /// </summary>
     public partial class AgentWindow
     {
-        string agentName = "";
+        public string currentAgentName { get; private set; }
 
         public AgentWindow(string agent)
         {
             InitializeComponent();
-            agentName = agent;
+            currentAgentName = agent;
             this.Title = this.Title + agent;
-            AV_AddProperty.Tag = this;
+            AV_Listings.Tag = this;
             AV_MangeClients.Tag = this;
         }
 
@@ -41,20 +41,14 @@ namespace RealEstate.Windows
             mainWindow.Show();
         }
 
-
-        private void BT_AddProperty_Click(object sender, RoutedEventArgs e)
-        {
-            ShowAddPropertyView();
-        }
-
         private void BT_ManageCustomers_Click(object sender, RoutedEventArgs e)
         {
             ShowManageClientsView();
         }
-        private void ShowAddPropertyView()
+        private void ShowListingsView()
         {
             HideButtons();
-            AV_AddProperty.Visibility = System.Windows.Visibility.Visible;
+            AV_Listings.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void ShowManageClientsView()
@@ -65,18 +59,28 @@ namespace RealEstate.Windows
 
         private void HideButtons()
         {
-            BT_AddProperty.Visibility = System.Windows.Visibility.Hidden;
+            BT_Listings.Visibility = System.Windows.Visibility.Hidden;
             BT_ManageCustomers.Visibility = System.Windows.Visibility.Hidden;
-            BT_PriceEstimator.Visibility = System.Windows.Visibility.Hidden;
+            BT_Properties.Visibility = System.Windows.Visibility.Hidden;
             BT_Manage.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void ShowButtons()
         {
-            BT_AddProperty.Visibility = System.Windows.Visibility.Visible;
+            BT_Listings.Visibility = System.Windows.Visibility.Visible;
             BT_ManageCustomers.Visibility = System.Windows.Visibility.Visible;
-            BT_PriceEstimator.Visibility = System.Windows.Visibility.Visible;
+            BT_Properties.Visibility = System.Windows.Visibility.Visible;
             BT_Manage.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        private void BT_Listings_Click(object sender, RoutedEventArgs e)
+        {
+            ShowListingsView();
+        }
+
+        private void BT_Properties_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         

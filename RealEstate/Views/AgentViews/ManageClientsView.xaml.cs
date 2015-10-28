@@ -36,6 +36,7 @@ namespace RealEstate.Views.AgentViews
             RefreshClients();
         }
 
+        #region Input Response
         private void BT_Back_Click(object sender, RoutedEventArgs e)
         {
             ShowAgentWindow();
@@ -64,18 +65,47 @@ namespace RealEstate.Views.AgentViews
             }
         }
 
+        private async void BT_DeleteClient_Click(object sender, RoutedEventArgs e)
+        {
+            if (DG_Clients.SelectedIndex != -1)
+            {
+                MessageBoxResult result = await MessageDialog.ShowAsync("Are you Sure?", "Are you sure you want to delete " + GetSelectedEmail(), MessageBoxButton.YesNo, MessageDialogType.Light);
+                if (result == MessageBoxResult.Yes)
+                {
+                    DeleteClient();
+                }
+                RefreshClients();
+            }
+            else
+            {
+                DisplayNotifyBox("Cannot delete", "Please select an client to delete", 2);
+            }
+        }
+
+        private void BT_EditPreferences_Click(object sender, RoutedEventArgs e)
+        {
+            if (DG_Clients.SelectedIndex != -1)
+            {
+                OpenEditPreferenceOverlay();
+            }
+            else
+            {
+                DisplayNotifyBox("Cannot Edit Preference", "Please select an client to edit preferences", 2);
+            }
+        }
+
         private void BT_Search_Click(object sender, RoutedEventArgs e)
         {
             Search();
         }
+#endregion
+        
+        #region Form Control
 
         private void ClientOverlays_OnClose(object sender, EventArgs e)
         {
             RefreshClients();
         }
-
-
-        #region Form Control
 
         private void DG_Clients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -124,9 +154,9 @@ namespace RealEstate.Views.AgentViews
         {
             (this.Tag as AgentWindow).AV_MangeClients.Visibility = System.Windows.Visibility.Hidden;
             (this.Tag as AgentWindow).BT_ManageCustomers.Visibility = System.Windows.Visibility.Visible;
-            (this.Tag as AgentWindow).BT_AddProperty.Visibility = System.Windows.Visibility.Visible;
+            (this.Tag as AgentWindow).BT_Listings.Visibility = System.Windows.Visibility.Visible;
             (this.Tag as AgentWindow).BT_Manage.Visibility = System.Windows.Visibility.Visible;
-            (this.Tag as AgentWindow).BT_PriceEstimator.Visibility = System.Windows.Visibility.Visible;
+            (this.Tag as AgentWindow).BT_Properties.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void LoadSearchCriteria()
@@ -185,6 +215,13 @@ namespace RealEstate.Views.AgentViews
             clientOverlay.OnExit += ClientOverlays_OnClose;
             clientOverlay.Owner = Framework.UI.Controls.Window.GetWindow(this);
             clientOverlay.Show();
+        }
+        private void OpenEditPreferenceOverlay()
+        {
+            Overlays.Client.EditPreferenceOverlay preferenceOverlay = new Overlays.Client.EditPreferenceOverlay(GetSelectedEmail());
+            preferenceOverlay.OnExit += ClientOverlays_OnClose;
+            preferenceOverlay.Owner = Framework.UI.Controls.Window.GetWindow(this);
+            preferenceOverlay.Show();
         }
         #endregion
 
@@ -250,6 +287,23 @@ namespace RealEstate.Views.AgentViews
         }
         #endregion
 
+        private void DeleteClient()
+        {
+            new System.Threading.Thread(() =>
+            {
+                Classes.ClientManager clientManager = new Classes.ClientManager();
+
+                if (clientManager.DeleteClient(GetSelectedEmail()))
+                {
+                    DisplayNotifyBox("Deleted", "The record has been deleted", 3);
+                }
+                else
+                {
+                    DisplayNotifyBox("Not Deleted", GetSelectedName() + " " + GetSelectedSurname() + " has not been deleted", 3);
+                }
+
+            }).Start();
+        }
        
 
         

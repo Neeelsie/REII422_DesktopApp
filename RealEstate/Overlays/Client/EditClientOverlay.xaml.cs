@@ -149,14 +149,14 @@ namespace RealEstate.Overlays.Client
 
                 if (editPassword)
                 {
-                    if (GetNewName() != "" && CanEditPassword())
+                    if (GetNewPassword() != "" && CanEditPassword())
                     {
                         EditPassword(clientEmail, GetNewPassword());
                     }
                     else
                     {
                         edited = false;
-                        DisplayNotifyBox("ERROR", "New name cannot be empty", 3);
+                        DisplayNotifyBox("ERROR", "New password cannot be empty", 3);
                     }
                 }
 
@@ -429,7 +429,7 @@ namespace RealEstate.Overlays.Client
 
                 if (clientManager.EditPassword(email, password))
                 {
-                    DisplayNotifyBox("Edited", "Password changed to " + password, 5);
+                    DisplayNotifyBox("Edited", "Password changed", 5);
                 }
                 else
                 {

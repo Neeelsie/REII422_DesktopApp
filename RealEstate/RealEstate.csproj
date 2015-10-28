@@ -114,7 +114,9 @@
     <Compile Include="Classes\DatabaseManager.cs" />
     <Compile Include="Classes\FtpManager.cs" />
     <Compile Include="Classes\FtpState.cs" />
+    <Compile Include="Classes\ListingManager.cs" />
     <Compile Include="Classes\LocationManager.cs" />
+    <Compile Include="Classes\PreferenceManager.cs" />
     <Compile Include="Classes\Session.cs" />
     <Compile Include="Classes\Validation.cs" />
     <Compile Include="DataSets\Config.Designer.cs">
@@ -127,6 +129,7 @@
     <Compile Include="GridViewSources\Area.cs" />
     <Compile Include="GridViewSources\City.cs" />
     <Compile Include="GridViewSources\Client.cs" />
+    <Compile Include="GridViewSources\Listings.cs" />
     <Compile Include="GridViewSources\Province.cs" />
     <Compile Include="Overlays\Admin\AddAdminOverlay.xaml.cs" />
     <Compile Include="Overlays\Admin\EditAdminOverlay.xaml.cs" />
@@ -137,6 +140,12 @@
     </Compile>
     <Compile Include="Overlays\Client\EditClientOverlay.xaml.cs">
       <DependentUpon>EditClientOverlay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Overlays\Client\EditPreferenceOverlay.xaml.cs">
+      <DependentUpon>EditPreferenceOverlay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Overlays\Listings\AddListingOverlay.xaml.cs">
+      <DependentUpon>AddListingOverlay.xaml</DependentUpon>
     </Compile>
     <Compile Include="Overlays\Location\AddAreaOverlay.xaml.cs" />
     <Compile Include="Overlays\Location\AddCityOverlay.xaml.cs" />
@@ -157,6 +166,9 @@
     <Compile Include="Views\AdminViews\ProvincesView.xaml.cs" />
     <Compile Include="Views\AgentViews\AddPropertyView.xaml.cs">
       <DependentUpon>AddPropertyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AgentViews\ListingsView.xaml.cs">
+      <DependentUpon>ListingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AgentViews\ManageClientsView.xaml.cs">
       <DependentUpon>ManageClientsView.xaml</DependentUpon>
@@ -198,6 +210,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Overlays\Client\EditClientOverlay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Overlays\Client\EditPreferenceOverlay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Overlays\Listings\AddListingOverlay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -250,6 +270,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AgentViews\AddPropertyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AgentViews\ListingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
