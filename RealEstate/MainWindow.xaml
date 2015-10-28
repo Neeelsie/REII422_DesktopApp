@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <Image Source="./Images/Logo.png" Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom" Stretch="None" />
-        
+        <!-- Testing -->
         <!--Loading Grid -->
         <Grid Grid.Column="1" Grid.Row="1" x:Name="G_Loading">
             <extra:LoadingContent x:Name="LC_Loading" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource RingLoadingContentStyle}" />
