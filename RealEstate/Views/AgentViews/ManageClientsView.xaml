@@ -50,12 +50,12 @@
                 <metro:CommandButton x:Name="BT_AddClient" Margin="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}" Style="{StaticResource AddCommandButtonStyle}" ToolTip="Add a client"  VerticalAlignment="Center"  Click="BT_AddClient_Click"/>
                 <metro:CommandButton x:Name="BT_EditClient" Margin="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}" Style="{StaticResource EditCommandButtonStyle}" ToolTip="Edit selected client" VerticalAlignment="Center" Click="BT_EditClient_Click"/>
                 <StackPanel Orientation="Vertical">
-                    <metro:CommandButton x:Name="BT_EditPreferences" Margin="{Binding ElementName=BT_AddClient, Path=Margin}" ToolTip="Edit selected client preferences" VerticalAlignment="Center">
+                    <metro:CommandButton x:Name="BT_EditPreferences" Margin="{Binding ElementName=BT_AddClient, Path=Margin}" ToolTip="Edit selected client preferences" VerticalAlignment="Center" Click="BT_EditPreferences_Click">
                         <extra:Icon Style="{StaticResource EditBoxIconStyle}" Size="Medium"/>
                     </metro:CommandButton>
                     <TextBlock Text = "Preference" HorizontalAlignment="Center"/>
                 </StackPanel>
-                <metro:CommandButton x:Name="BT_DeleteClient" Margin="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}" Style="{StaticResource DeleteCommandButtonStyle}" ToolTip="Delete selected client"  VerticalAlignment="Center" />
+                <metro:CommandButton x:Name="BT_DeleteClient" Margin="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}" Style="{StaticResource DeleteCommandButtonStyle}" ToolTip="Delete selected client"  VerticalAlignment="Center" Click="BT_DeleteClient_Click"/>
                 <metro:CommandButton x:Name="BT_Refresh" Margin="{Binding RelativeSource={RelativeSource Self}, Path=(params:General.BoldPadding), Mode=OneWay}" Style="{StaticResource RefreshCommandButtonStyle}" ToolTip="Refresh client" VerticalAlignment="Center" Click="BT_Refresh_Click" />
             </extra:AnimatedWrapPanel>
 

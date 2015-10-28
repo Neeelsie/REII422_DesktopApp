@@ -27,11 +27,11 @@ namespace RealEstate.Views.AgentViews
 
         private void ShowAgentWindow()
         {
-            (this.Tag as AgentWindow).AV_AddProperty.Visibility = System.Windows.Visibility.Hidden;
+            (this.Tag as AgentWindow).AV_Listings.Visibility = System.Windows.Visibility.Hidden;
             (this.Tag as AgentWindow).BT_ManageCustomers.Visibility = System.Windows.Visibility.Visible;
-            (this.Tag as AgentWindow).BT_AddProperty.Visibility = System.Windows.Visibility.Visible;
+            (this.Tag as AgentWindow).BT_Listings.Visibility = System.Windows.Visibility.Visible;
             (this.Tag as AgentWindow).BT_Manage.Visibility = System.Windows.Visibility.Visible;
-            (this.Tag as AgentWindow).BT_PriceEstimator.Visibility = System.Windows.Visibility.Visible;
+            (this.Tag as AgentWindow).BT_Properties.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void BT_Back_Click(object sender, RoutedEventArgs e)

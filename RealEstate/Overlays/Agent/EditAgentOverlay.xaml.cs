@@ -149,14 +149,14 @@ namespace RealEstate.Overlays.Agent
 
                 if (editPassword)
                 {
-                    if (GetNewName() != "" && CanEditPassword())
+                    if (GetNewPassword() != "" && CanEditPassword())
                     {
                         EditPassword(agentEmail, GetNewPassword());
                     }
                     else
                     {
                         edited = false;
-                        DisplayNotifyBox("ERROR", "New name cannot be empty", 3);
+                        DisplayNotifyBox("ERROR", "New password cannot be empty", 3);
                     }
                 }
 
@@ -426,7 +426,7 @@ namespace RealEstate.Overlays.Agent
 
                 if (agentManager.EditPassword(email, password))
                 {
-                    DisplayNotifyBox("Edited", "Password changed to " + password, 5);
+                    DisplayNotifyBox("Edited", "Password changed",5);
                 }
                 else
                 {

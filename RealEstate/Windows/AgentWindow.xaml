@@ -21,15 +21,15 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
-        <AgentViews:AddPropertyView Visibility="Hidden" x:Name="AV_AddProperty" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+
+        <AgentViews:ListingsView Visibility="Hidden" x:Name="AV_Listings" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
         
         <AgentViews:ManageClientsView Visibility="Hidden" x:Name="AV_MangeClients" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2" />
         
-        <Button x:Name="BT_AddProperty" Grid.Column="0" Grid.Row="0" Margin="5,5,5,5" Click="BT_AddProperty_Click">
+        <Button x:Name="BT_Listings" Grid.Column="0" Grid.Row="0" Margin="5,5,5,5" Click="BT_Listings_Click">
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <extra:Icon Style="{StaticResource HousesIconStyle}" Size="VeryLarge" />
-                <TextBlock Text="Add Property" FontSize="30"  />
+                <extra:Icon Style="{StaticResource CabinetFilesVariantIconStyle}" Size="VeryLarge" />
+                <TextBlock Text="Listings" FontSize="30"  />
             </StackPanel>
         </Button>
         
@@ -40,14 +40,14 @@
              </StackPanel>
         </Button>
         
-        <Button x:Name="BT_PriceEstimator" Grid.Column="0" Grid.Row="1" Margin="5,0,5,10">
+        <Button x:Name="BT_Properties" Grid.Column="0" Grid.Row="1" Margin="5,0,5,10" Click="BT_Properties_Click">
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <extra:Icon Style="{StaticResource SouthAfricanRandIconStyle}" Size="VeryLarge" />
-                <TextBlock Text="Price Estimator" FontSize="30" />
+                <extra:Icon Style="{StaticResource HousesIconStyle}" Size="VeryLarge" />
+                <TextBlock Text="Properties" FontSize="30" />
             </StackPanel>
         </Button>
 
-        <Button x:Name="BT_Manage" Grid.Column="1" Grid.Row="1" Margin="5,5,5,5">
+        <Button x:Name="BT_Manage" Grid.Column="1" Grid.Row="1" Margin="5,0,5,10">
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                 <extra:Icon Style="{StaticResource Tools1IconStyle}" Size="VeryLarge" />
                 <TextBlock Text="Manage" FontSize="30" />

@@ -1,0 +1,127 @@
+﻿<extra:OverlayWindow x:Class="RealEstate.Overlays.Client.EditPreferenceOverlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:extra="http://schemas.extra.com/ui"
+        xmlns:metro="http://schemas.codeplex.com/elysium"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"              
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:params="http://schemas.codeplex.com/elysium/params"
+        x:Name="RE_EditPreference"
+        Loaded="RE_EditPreference_Loaded"
+        Closed="RE_EditPreference_Closed"
+        Title="EditPreferenceOverlay" Height="300" Width="300" TitleBarVisibility="Visible">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
+                <TextBlock x:Name="TBL_SelectPreference" Text="Switch between preferences: " Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <ComboBox x:Name="CB_Preferences" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" SelectionChanged="CB_Preferences_SelectionChanged"/>
+                <extra:AnimatedWrapPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" >
+                    <StackPanel Orientation="Vertical">
+                        <metro:CommandButton x:Name="BT_DeletePreference" Height="30" Width="30" ToolTip="Delete selected preference" VerticalAlignment="Center" Click="BT_DeletePreference_Click" IsEnabled="False">
+                            <extra:Icon Style="{StaticResource Delete1IconStyle}" Size="Small"/>
+                        </metro:CommandButton>
+                    </StackPanel>
+                </extra:AnimatedWrapPanel>
+            </StackPanel>
+
+            <TextBlock x:Name="TBL_Bedrooms" Text="Bedrooms: " Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+                <TextBlock x:Name="TBL_MinBedrooms" Text="Min " Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <ComboBox x:Name="CB_MinBedrooms" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75" />
+                <TextBlock x:Name="TBL_MaxBedrooms" Text=" Max " Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <ComboBox x:Name="CB_MaxBedrooms" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75" />
+            </StackPanel>
+            <TextBlock x:Name="TBL_Bathrooms" Text="Bathrooms: " Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
+                <TextBlock x:Name="TBL_MinBathrooms" Text="Min " Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <ComboBox x:Name="CB_MinBathrooms" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Width="75" />
+                <TextBlock x:Name="TBL_MaxBathrooms" Text=" Max " Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <ComboBox x:Name="CB_MaxBathrooms" Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" Width="75" />
+            </StackPanel>
+            <TextBlock x:Name="TBL_Garages" Text="Garages: " Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Right">
+                <TextBlock x:Name="TBL_MinGarages" Text="Min " Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <ComboBox x:Name="CB_MinGarages" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Width="75" />
+                <TextBlock x:Name="TBL_MaxGarages" Text=" Max " Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <ComboBox x:Name="CB_MaxGarages" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right" Width="75" />
+            </StackPanel>
+            <TextBlock x:Name="TBL_PlotSize" Text="Plot Size (m²): " Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Right">
+                <TextBlock x:Name="TBL_MinPlotSize" Text="Min " Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <TextBox x:Name="TB_MinPlotSize" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Left" Width="75" />
+                <TextBlock x:Name="TBL_MaxPlotSize" Text=" Max " Grid.Column="0" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <TextBox x:Name="TB_MaxPlotSize" Grid.Column="0" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right" Width="75" />
+            </StackPanel>
+            <TextBlock x:Name="TBL_HouseSize" Text="House Size (m²): " Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Right">
+                <TextBlock x:Name="TBL_MinHouseSize" Text="Min " Grid.Column="0" Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <TextBox x:Name="TB_MinHouseSize" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Left" Width="75" />
+                <TextBlock x:Name="TBL_MaxHouseSize" Text=" Max " Grid.Column="0" Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <TextBox x:Name="TB_MaxHouseSize" Grid.Column="0" Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Right" Width="75" />
+            </StackPanel>
+            <TextBlock x:Name="TBL_Price" Text="Price (R): " Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="6" HorizontalAlignment="Right">
+                <TextBlock x:Name="TBL_MinPrice" Text="Min " Grid.Column="0" Grid.Row="10" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <TextBox x:Name="TB_MinPrice" Grid.Column="1" Grid.Row="10" VerticalAlignment="Center" HorizontalAlignment="Left" Width="75" />
+                <TextBlock x:Name="TBL_MaxPrice" Text=" Max " Grid.Column="0" Grid.Row="11" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <TextBox x:Name="TB_MaxPrice" Grid.Column="0" Grid.Row="11" VerticalAlignment="Center" HorizontalAlignment="Right" Width="75" />
+            </StackPanel>
+            <TextBlock x:Name="TBL_HasPool" Text="Has Pool: " Grid.Column="0" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="CB_HasPool" Grid.Column="0" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" />
+
+            <StackPanel Orientation="Horizontal" Grid.Row="8" HorizontalAlignment="Center">
+                <ComboBox x:Name="CB_Province" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" SelectionChanged="CB_Province_SelectionChanged"/>
+                <ComboBox x:Name="CB_City" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" SelectionChanged="CB_City_SelectionChanged"/>
+                <ComboBox x:Name="CB_Area" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Width="100" SelectionChanged="CB_Area_SelectionChanged"/>
+                <extra:AnimatedWrapPanel Grid.Row="8" Grid.Column="0" HorizontalAlignment="Right" >
+                    <StackPanel Orientation="Vertical">
+                        <metro:CommandButton x:Name="BT_AddArea" Height="30" Width="30" ToolTip="Add selected city" VerticalAlignment="Center" Click="BT_AddArea_Click" IsEnabled="False">
+                            <extra:Icon Style="{StaticResource Add1IconStyle}" Size="Small"/>
+                        </metro:CommandButton>
+                    </StackPanel>
+                </extra:AnimatedWrapPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="9" HorizontalAlignment="Center">
+                <ComboBox x:Name="CB_PreferedAreas" Text="" Grid.Column="0" Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Left" Width="300"/>
+                <extra:AnimatedWrapPanel Grid.Row="9" Grid.Column="0" HorizontalAlignment="Right" >
+                    <StackPanel Orientation="Vertical">
+                        <metro:CommandButton x:Name="BT_RemoveArea" Height="30" Width="30" ToolTip="Add selected city" VerticalAlignment="Center" Click="BT_RemoveArea_Click"  IsEnabled="False">
+                            <extra:Icon Style="{StaticResource Delete1IconStyle}" Size="Small"/>
+                        </metro:CommandButton>
+                    </StackPanel>
+                </extra:AnimatedWrapPanel>
+            </StackPanel>
+
+            <Button x:Name="BT_CreateNew" Content="Create New" Grid.Column="0" Grid.Row="10" Margin="10,0,0,0" Click="BT_CreateNew_Click" HorizontalAlignment="Left"/>
+            <Button x:Name="BT_EditExisting" Content="Edit Existing" Grid.Column="0" Grid.Row="10" Click="BT_EditExisting_Click"  HorizontalAlignment="Center"/>
+            <Button x:Name="BT_Cancel" Content="Exit" Grid.Column="0" Grid.Row="10" Margin="10,0,0,0" Click="BT_Cancel_Click" HorizontalAlignment="Right"/>
+
+        </Grid>
+    </Grid>
+</extra:OverlayWindow>

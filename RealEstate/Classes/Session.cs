@@ -17,10 +17,9 @@ namespace RealEstate.Classes
         public Session(string loginUsername, string loginPassword)
         {
             username = "";
+            password = "";
 
             IsAdmin = UsernameInAdminTable(loginUsername);
-
-            Cryptography crypto = new Cryptography();
 
             password = GetPassword(loginUsername, IsAdmin);
             username = GetUsername(loginUsername, IsAdmin);
