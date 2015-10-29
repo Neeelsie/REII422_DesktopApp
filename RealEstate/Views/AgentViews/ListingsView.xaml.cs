@@ -39,7 +39,7 @@ namespace RealEstate.Views.AgentViews
             (this.Tag as AgentWindow).BT_Manage.Visibility = System.Windows.Visibility.Visible;
             (this.Tag as AgentWindow).BT_Properties.Visibility = System.Windows.Visibility.Visible;
         }
-        private string GetCurrentAgent()
+        public string GetCurrentAgent()
         {
             string currentAgent = "";
 

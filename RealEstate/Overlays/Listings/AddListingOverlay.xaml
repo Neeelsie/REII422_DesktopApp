@@ -39,11 +39,11 @@
                 <RowDefinition Height="30" />
                 <RowDefinition Height="30" />
                 <RowDefinition Height="30" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="35" />
             </Grid.RowDefinitions>
 
                 <TextBlock x:Name="TBL_Client" Text="Client: " Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <ComboBox x:Name="CB_Client" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Width="100" SelectionChanged="CB_Client_SelectionChanged"/>
+                <ComboBox x:Name="CB_Client" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Width="300" SelectionChanged="CB_Client_SelectionChanged"/>
             
             <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Right">
                 <ComboBox x:Name="CB_Province" HorizontalAlignment="Left"  Width="100" SelectionChanged="CB_Province_SelectionChanged"/>
@@ -92,7 +92,11 @@
             <CheckBox x:Name="CB_isNegotiable" Grid.Row="15" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
             <TextBlock x:Name="TBL_isSold" Text="Sold: " Grid.Row="16" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <CheckBox x:Name="CB_isSold" Grid.Row="16" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
+            <TextBlock x:Name="TBL_hasPool" Text="Pool: " Grid.Row="17" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <CheckBox x:Name="CB_hasPool" Grid.Row="17" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
+            <Button x:Name="BT_CreateNew" Content="Create New Listing" Grid.Column="0" Grid.Row="18" Margin="10,0,0,0" Click="BT_CreateNew_Click" HorizontalAlignment="Left" />
+            <Button x:Name="BT_Cancel" Content="Cancel" Grid.Column="1" Grid.Row="18" Margin="10,0,0,0" Click="BT_Cancel_Click" HorizontalAlignment="Right" />
         </Grid>
     </Grid>
 </extra:OverlayWindow>
