@@ -22,6 +22,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <AgentViews:AddListingView Visibility="Hidden" x:Name="AV_AddListing" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        
         <AgentViews:ListingsView Visibility="Hidden" x:Name="AV_Listings" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
         
         <AgentViews:ManageClientsView Visibility="Hidden" x:Name="AV_MangeClients" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2" />

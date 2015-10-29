@@ -12,35 +12,25 @@ namespace RealEstate.Classes
 {
     class FtpManager
     {
-        ConfigManager configManager = new ConfigManager();
+        public float progress { get; private set; }
 
-        string webDir = "";
-        string username = "";
-        string password = "";
+        public delegate void UpdateProgress(double progress);
 
-        public FtpManager()
-        {
-            if (configManager.ConfigLoaded)
-            {
-                webDir = configManager.FtpWebDirectory;
-                username = configManager.FtpUser;
-                password = configManager.FtpPassword;
-            }
-        }
+        public event UpdateProgress OnProgressChange;
 
-        private bool UploadFile(string sourceFilePath, string destFileName)
+        public void UploadFile(string source, string dest)
         {
             ManualResetEvent waitObject;
 
-            Uri target = new Uri(webDir + '/' + destFileName);
+            Uri target = new Uri(dest);
             FtpState state = new FtpState();
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(target);
             request.Method = WebRequestMethods.Ftp.UploadFile;
 
-            request.Credentials = new NetworkCredential(username, password);
+            request.Credentials = new NetworkCredential("ingenkia", "cT8CSz9u");
 
             state.Request = request;
-            state.FileName = sourceFilePath;
+            state.FileName = source;
 
             waitObject = state.OperationComplete;
 
@@ -48,19 +38,17 @@ namespace RealEstate.Classes
 
             waitObject.WaitOne();
 
-            if( state.OperationException != null)
+            if (state.OperationException != null)
             {
                 throw state.OperationException;
-                return false;
             }
             else
             {
                 Console.WriteLine("Done");
-                return true;
             }
         }
 
-        private static void EndGetStreamCallback(IAsyncResult ar)
+        private void EndGetStreamCallback(IAsyncResult ar)
         {
             FtpState state = (FtpState)ar.AsyncState;
 
@@ -80,6 +68,9 @@ namespace RealEstate.Classes
                     readBytes = stream.Read(buffer, 0, bufferLength);
                     requestStream.Write(buffer, 0, readBytes);
                     count += readBytes;
+
+                    if (OnProgressChange != null)
+                        OnProgressChange(count / (double)stream.Length);
                 }
                 while (readBytes != 0);
 
@@ -98,7 +89,7 @@ namespace RealEstate.Classes
             }
         }
 
-        private static void EndGetResponseCallback(IAsyncResult ar)
+        private void EndGetResponseCallback(IAsyncResult ar)
         {
             FtpState state = (FtpState)ar.AsyncState;
             FtpWebResponse response = null;

@@ -1,0 +1,151 @@
+﻿<UserControl x:Class="RealEstate.Views.AgentViews.AddListingView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:extra="http://schemas.extra.com/ui"
+        xmlns:metro="http://schemas.codeplex.com/elysium"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"              
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:interactivity="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:params="http://schemas.codeplex.com/elysium/params"             
+        mc:Ignorable="d"
+        d:DesignHeight="600" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        
+        <GroupBox Header="Listing Properties" Grid.Row="0" Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Client : " Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                <ComboBox x:Name="CB_Client" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="300" SelectionChanged="CB_Client_SelectionChanged"/>
+
+                <TextBlock Text="Address : " Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" />
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+                    <ComboBox x:Name="CB_Province" HorizontalAlignment="Left"  Width="100" SelectionChanged="CB_Province_SelectionChanged"/>
+                    <ComboBox x:Name="CB_City" HorizontalAlignment="Center" Width="100" SelectionChanged="CB_City_SelectionChanged"/>
+                    <ComboBox x:Name="CB_Area" HorizontalAlignment="Right" Width="100" SelectionChanged="CB_Area_SelectionChanged"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Left" Grid.Column="1" VerticalAlignment="Center" >
+                    <TextBlock  Text="Streetname " VerticalAlignment="Center"/>
+                    <TextBox x:Name="TB_Streetname"  Width="75" VerticalAlignment="Center"/>
+                    <TextBlock Text=" Streetno " VerticalAlignment="Center"/>
+                    <TextBox x:Name="TB_Streetno" Width="75" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <TextBlock x:Name="TBL_Complex" Text="Complex : " VerticalAlignment="Center"/>
+                    <CheckBox x:Name="CB_Complex" VerticalAlignment="Center" Width="Auto" Click="CB_Complex_Click" />
+                </StackPanel>
+
+                <StackPanel x:Name="SP_ComplexDetails" Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Left" Grid.Column="1" Visibility="Hidden">
+                    <TextBlock x:Name="TBL_ComplexName" Text="Name : " VerticalAlignment="Center" />
+                    <TextBox x:Name="TB_ComplexName" Grid.Column="1" VerticalAlignment="Center"   Width="75" />
+                    <TextBlock x:Name="TBL_ComplexNo" Text="Complex Number : " VerticalAlignment="Center"  />
+                    <TextBox x:Name="TB_ComplexNo" VerticalAlignment="Center"  Width="75" />
+                </StackPanel>
+
+                <TextBlock Text="Bedrooms: "  Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBlock Text="Bathrooms: " Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <TextBlock Text="Garages: " Grid.Row="6" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBlock Text="Plot Size (m²): " Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBlock Text="House Size (m²): " Grid.Row="8" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBlock Text="Price (R):" Grid.Row="9" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBlock Text="Listing Price: "  Grid.Row="10" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBlock Text="Negotiable: " Grid.Row="11" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <TextBlock Text="Sold: " Grid.Row="12" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBlock Text="Pool: " Grid.Row="13" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+                <TextBox x:Name ="TB_Bedrooms" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Width="75"/>
+                <TextBox x:Name="TB_Bathrooms" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Width="75"/>
+                <TextBox x:Name="TB_Garages" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Width="75" Margin="0,7,0,6"/>
+                <TextBox x:Name="TB_PlotSize"  Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Width="75"/>
+                <TextBox x:Name="TB_HouseSize"   Grid.Row="8" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Width="75"/>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Column="1" Grid.Row="9">
+                    <TextBox x:Name="TB_Price" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="100"/>
+                    <Button x:Name="BT_Estimate" Content="Estimate"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                </StackPanel>
+
+                <TextBox x:Name="TB_ListPrice" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100"/>
+                <CheckBox x:Name="CB_isNegotiable" Grid.Row="11" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <CheckBox x:Name="CB_isSold" Grid.Row="12" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <CheckBox x:Name="CB_hasPool" Grid.Row="13" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Header="Listing Images" Grid.Row="0" Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+
+                    <Image x:Name="IMG_SelectedImage" Grid.Row="0" />
+                    
+                    <StackPanel Orientation="Horizontal" Grid.Row="1">
+                        <TextBlock Text="Caption : " VerticalAlignment="Center"/>
+                        <TextBox x:Name="TB_ImageCaption" Width="250" VerticalAlignment="Center" PreviewTextInput="TB_ImageCaption_PreviewTextInput" />
+                    </StackPanel>
+                </Grid>
+                
+                
+                
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="2">
+                    <ComboBox x:Name="CB_Images" Width="200" SelectionChanged="CB_Images_SelectionChanged"/>
+                    <Button x:Name="BT_Delete" Content="Remove" Margin="5,0,5,0" Click="BT_Delete_Click" />
+                    <Button x:Name="BT_AddImage" Content="Add" Margin="5,0,5,0" Click="BT_AddImage_Click" />
+                </StackPanel>
+                
+            </Grid>
+        </GroupBox>
+        
+        
+        
+        <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Button x:Name="BT_CreateListing" Content="Create New Listing" Margin="5,0,5,0" Click="BT_CreateListing_Click"/>
+            <Button x:Name="BT_Cancel" Grid.Column="1" Content="Cancel" Margin="5,0,5,0" Click="BT_Cancel_Click"/>
+        </Grid>
+        
+        
+    </Grid>
+</UserControl>

@@ -28,7 +28,6 @@ namespace RealEstate.Views.AgentViews
         {
             InitializeComponent();
             RefreshListings();
-
         }
 
         private void ShowAgentWindow()
@@ -67,7 +66,8 @@ namespace RealEstate.Views.AgentViews
 
         private void BT_AddListing_Click(object sender, RoutedEventArgs e)
         {
-            OpenEditListingsOverlay();
+            //OpenEditListingsOverlay();
+            OpenAddListingView();
 
         }
 
@@ -86,6 +86,7 @@ namespace RealEstate.Views.AgentViews
 
         }
 #endregion
+
         #region OpenOverlays
         private void OpenEditListingsOverlay()
         {
@@ -93,6 +94,12 @@ namespace RealEstate.Views.AgentViews
             listingOverlay.OnExit += ListingsOverlays_OnClose;
             listingOverlay.Owner = Framework.UI.Controls.Window.GetWindow(this);
             listingOverlay.Show();
+        }
+
+        private void OpenAddListingView()
+        {
+            (this.Tag as AgentWindow).HideListingsView();
+            (this.Tag as AgentWindow).ShowAddListingView();
         }
         #endregion
         #region FormControl

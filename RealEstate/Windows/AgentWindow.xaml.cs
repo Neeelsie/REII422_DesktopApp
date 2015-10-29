@@ -28,6 +28,7 @@ namespace RealEstate.Windows
             this.Title = this.Title + agent;
             AV_Listings.Tag = this;
             AV_MangeClients.Tag = this;
+            AV_AddListing.Tag = this;
         }
 
         private void RE_AgentWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -45,10 +46,25 @@ namespace RealEstate.Windows
         {
             ShowManageClientsView();
         }
-        private void ShowListingsView()
+        public void ShowListingsView()
         {
             HideButtons();
             AV_Listings.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        public void HideListingsView()
+        {
+            AV_Listings.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        public void ShowAddListingView()
+        {
+            AV_AddListing.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        public void HideAddListingView()
+        {
+            AV_AddListing.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void ShowManageClientsView()
