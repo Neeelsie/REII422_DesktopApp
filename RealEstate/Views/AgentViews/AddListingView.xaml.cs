@@ -334,6 +334,11 @@ namespace RealEstate.Views.AgentViews
 
         }
 
+        private void BT_Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
        
 
     }

@@ -27,6 +27,7 @@ namespace RealEstate.Overlays.Listings
         int numberOfImages = 0;
 
         const string webDir = "ftp://ingeneric.co.za/public_html/RealEstate/";
+        const string linkDir = "http://ingeneric.co.za/RealEstate/";
 
         public LoadingOverlay(int property, List<string> localFiles, List<string> captions)
         {
@@ -45,10 +46,15 @@ namespace RealEstate.Overlays.Listings
                 {
                     Hashing hashing = new Hashing();
                     List<string> urls = new List<string>();
+                    List<string> links = new List<string>();
 
                     foreach( string localFile in localFilePaths)
                     {
-                        urls.Add(webDir + hashing.HashFile(localFile) + System.IO.Path.GetExtension(localFile));
+                        string fileHash = hashing.HashFile(localFile);
+                        string extension = System.IO.Path.GetExtension(localFile);
+
+                        urls.Add(webDir + fileHash + extension );
+                        links.Add(linkDir + fileHash + extension);
                     }
 
 
@@ -61,7 +67,7 @@ namespace RealEstate.Overlays.Listings
                         LoadImage(localFilePaths[i]);
                         UpdateProgress(numberOfImages, i+1);
                         ftpManger.UploadFile(localFilePaths[i], urls[i]);
-                        listingManager.AddListingImage(propertyID, urls[i], imageCaptions[i]);
+                        listingManager.AddListingImage(propertyID, links[i], imageCaptions[i]);
                     }
 
                     CloseForm();
