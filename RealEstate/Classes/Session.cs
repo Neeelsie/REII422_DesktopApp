@@ -26,7 +26,7 @@ namespace RealEstate.Classes
 
             if (password != "" && username != "")
             {
-                if ((username == loginUsername) && (password == loginPassword))
+                if ((username == loginUsername) && Cryptography.ValidatePassword(loginPassword,password) )
                 {
                     LoginSuccessfull = true;
                 }

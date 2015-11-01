@@ -13,7 +13,9 @@ namespace RealEstate.Classes
             DatabaseManager dbManager = new DatabaseManager();
             Cryptography crypto = new Cryptography();
 
-            return (dbManager.NonReturnQuery("INSERT INTO Agent (Agent_Name , Agent_Surname, Agent_Phone, Agent_Email, Agent_Password) VALUES ('" + name + "','" + surname + "','" + phone + "','" + email + "','" + crypto.EncryptString(password) + "');"));
+            MySql.Data.MySqlClient.MySqlCommand com = new MySql.Data.MySqlClient.MySqlCommand();
+
+            return (dbManager.NonReturnQuery("INSERT INTO Agent (Agent_Name , Agent_Surname, Agent_Phone, Agent_Email, Agent_Password) VALUES ('" + name + "','" + surname + "','" + phone + "','" + email + "','" + Cryptography.CreateHash(password).ToString() + "');"));
         }
         public bool DeleteAgent(string email)
         {
@@ -55,7 +57,7 @@ namespace RealEstate.Classes
             DatabaseManager dbManager = new DatabaseManager();
             Cryptography crypto = new Cryptography();
 
-            return (dbManager.NonReturnQuery("UPDATE Agent set Agent_Password = '" + crypto.EncryptString(newPassword) + "' WHERE Agent_Email ='" + email + "';"));
+            return (dbManager.NonReturnQuery("UPDATE Agent set Agent_Password = '" + Cryptography.CreateHash(newPassword) + "' WHERE Agent_Email ='" + email + "';"));
         }
 
         public bool CanAddAgent(string email)

@@ -13,7 +13,7 @@ namespace RealEstate.Classes
             DatabaseManager dbManager = new DatabaseManager();
             Cryptography crypto = new Cryptography();
 
-            return (dbManager.NonReturnQuery("INSERT INTO Admin (Admin_Username , Admin_Password) VALUES ('" + username + "','" + crypto.EncryptString(password) + "');"));
+            return (dbManager.NonReturnQuery("INSERT INTO Admin (Admin_Username , Admin_Password) VALUES ('" + username + "','" + Cryptography.CreateHash(password) + "');"));
         }
         public bool DeleteAdmin(string username)
         {
@@ -34,7 +34,7 @@ namespace RealEstate.Classes
             DatabaseManager dbManager = new DatabaseManager();
             Cryptography crypto = new Cryptography();
 
-            return (dbManager.NonReturnQuery("UPDATE Admin set Admin_Password = '" + crypto.EncryptString(newPassword) + "' WHERE Admin_Username ='" + username + "';"));
+            return (dbManager.NonReturnQuery("UPDATE Admin set Admin_Password = '" + Cryptography.CreateHash(newPassword) + "' WHERE Admin_Username ='" + username + "';"));
         }
 
         public bool CanAddAdmin(string username)

@@ -13,7 +13,7 @@ namespace RealEstate.Classes
             DatabaseManager dbManager = new DatabaseManager();
             Cryptography crypto = new Cryptography();
 
-            return (dbManager.NonReturnQuery("INSERT INTO Clients (Client_Name , Client_Surname, Client_Phone, Client_Email, Client_Password) VALUES ('" + name + "','" + surname + "','" + phone + "','" + email + "','" + crypto.EncryptString(password) + "');"));
+            return (dbManager.NonReturnQuery("INSERT INTO Clients (Client_Name , Client_Surname, Client_Phone, Client_Email, Client_Password) VALUES ('" + name + "','" + surname + "','" + phone + "','" + email + "','" + Cryptography.CreateHash(password) + "');"));
         }
         public bool DeleteClient(string email)
         {
